@@ -4,6 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <OutputType>Library</OutputType>
+    <PackageId>linkParserDotNet</PackageId>
+    <Version>0.7</Version>
+    <Authors>David Edgar</Authors>
+    <PackageDescription>A parser for extracting links from web pages. Parses the Link header (https://httpwg.org/specs/rfc8288.html), <link> elements and <a> elements.</PackageDescription>
+    <RepositoryUrl>https://github.com/gilmae/linkParser.net</RepositoryUrl>
+
   </PropertyGroup>
 
   <ItemGroup>
