@@ -10,14 +10,14 @@ public class Parser
 
     private readonly Uri _baseUrl;
 
-    private IList<HttpLink> _links;
+    private IList<Link> _links;
 
-    public IList<HttpLink> Links { get { return _links; } }
+    public IList<Link> Links { get { return _links; } }
 
     internal Parser(Uri baseUrl)
     {
         _baseUrl = baseUrl;
-        _links = new List<HttpLink>();
+        _links = new List<Link>();
     }
 
     public static Parser Parse(Uri url)
@@ -46,7 +46,7 @@ public class Parser
 
     private void FindLinks(string header, string body)
     {
-        ParseHttpLinkHeader(header);
+        ParseLinkHeader(header);
         
 
         ParseBody(body);
@@ -74,7 +74,7 @@ public class Parser
                 href = new Uri(_baseUrl, href).ToString();
             }
 
-            HttpLink link = new HttpLink { Url = href };
+            Link link = new Link { Url = href };
 
             link.Rel = l.Attributes["rel"]?.Value??"";
             foreach (var a in l.Attributes) {
@@ -85,7 +85,7 @@ public class Parser
         }
     }
 
-    private void ParseHttpLinkHeader(string header)
+    private void ParseLinkHeader(string header)
     {
         var links = header.Split(',');
         foreach (string l in links)
@@ -100,7 +100,7 @@ public class Parser
             {
                 url = new Uri(_baseUrl, url).ToString();
             }
-            HttpLink link = new HttpLink { Url = url, InHeaders=true };
+            Link link = new Link { Url = url, InHeaders=true };
             var linkParams = Regex.Matches(l, paramsRegexPattern, RegexOptions.IgnoreCase)
                                     .SelectMany(m =>
                                         m.Captures.Where(c => c is Match && (c as Match)?.Groups?.Count == 3))
@@ -128,18 +128,7 @@ public class Parser
         }
     }
 
-    public class HttpLink
-    {
-        public string Rel { get; set; } = default!;
-        public string Url { get; set; } = default!;
-        public Dictionary<string, string> Params { get; set; }
-        public bool InHeaders { get; set; }
-
-        public HttpLink()
-        {
-            Params = new Dictionary<string, string>();
-        }
-    }
+    
 }
 
 
