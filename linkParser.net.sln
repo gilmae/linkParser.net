@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "linkParser.net", "linkParser.net\linkParser.net.csproj", "{B7327D39-838E-4D3B-A602-809D86DD70D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "linkParser.Tests", "linkParser.Tests\linkParser.Tests.csproj", "{9FAA9ED3-C66A-4363-9820-1DB4B0E1C7E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7327D39-838E-4D3B-A602-809D86DD70D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7327D39-838E-4D3B-A602-809D86DD70D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7327D39-838E-4D3B-A602-809D86DD70D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7327D39-838E-4D3B-A602-809D86DD70D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FAA9ED3-C66A-4363-9820-1DB4B0E1C7E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FAA9ED3-C66A-4363-9820-1DB4B0E1C7E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FAA9ED3-C66A-4363-9820-1DB4B0E1C7E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FAA9ED3-C66A-4363-9820-1DB4B0E1C7E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D8AE5E2-26E3-417E-B819-BE33F486EFAB}
+	EndGlobalSection
+EndGlobal
