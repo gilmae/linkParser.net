@@ -46,8 +46,8 @@ public class Parser
 
     private void FindLinks(string header, string body)
     {
-        ParseLinkHeader(header);
-        
+        ParseHttpLinkHeader(header);
+
 
         ParseBody(body);
     }
@@ -76,8 +76,11 @@ public class Parser
 
             Link link = new Link { Url = href };
 
-            link.Rel = l.Attributes["rel"]?.Value??"";
-            foreach (var a in l.Attributes) {
+            link.Rel = l.Attributes["rel"]?.Value ?? "";
+            link.Title = l.Attributes["title"]?.Value ?? "";
+
+            foreach (var a in l.Attributes)
+            {
                 link.Params[a.Name] = a.Value;
             }
 
@@ -85,13 +88,13 @@ public class Parser
         }
     }
 
-    private void ParseLinkHeader(string header)
+    private void ParseHttpLinkHeader(string header)
     {
         var links = header.Split(',');
         foreach (string l in links)
         {
             string? url = Regex.Match(l, urlRegex, RegexOptions.IgnoreCase)?.Groups[0]?.Value;
-            if (url == null)
+            if (string.IsNullOrEmpty(url))
             {
                 continue;
             }
@@ -100,7 +103,7 @@ public class Parser
             {
                 url = new Uri(_baseUrl, url).ToString();
             }
-            Link link = new Link { Url = url, InHeaders=true };
+            Link link = new Link { Url = url, InHeaders = true };
             var linkParams = Regex.Matches(l, paramsRegexPattern, RegexOptions.IgnoreCase)
                                     .SelectMany(m =>
                                         m.Captures.Where(c => c is Match && (c as Match)?.Groups?.Count == 3))
@@ -112,6 +115,8 @@ public class Parser
                         }
                                     );
             link.Rel = linkParams.FirstOrDefault(i => i.Name == "rel")?.Value ?? "";
+
+            link.Title = linkParams.FirstOrDefault(i => i.Name == "title")?.Value ?? "";
             foreach (var p in linkParams)
             {
                 if (string.IsNullOrEmpty(p.Name))
@@ -128,7 +133,6 @@ public class Parser
         }
     }
 
-    
 }
 
 
