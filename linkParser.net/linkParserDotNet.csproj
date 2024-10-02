@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>
     <PackageId>linkParserDotNet</PackageId>
-    <Version>0.1-alpha</Version>
+    <Version>0.2-alpha</Version>
     <Authors>David Edgar</Authors>
     <PackageDescription>A parser for extracting links from web pages. Parses the Link header (https://httpwg.org/specs/rfc8288.html), link elements and a elements.</PackageDescription>
     <RepositoryUrl>https://github.com/gilmae/linkParser.net</RepositoryUrl>
@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.17.1" />
-    <PackageReference Include="RestSharp" Version="110.2.0" />
+    <PackageReference Include="RestSharp" Version="112.0.0" />
   </ItemGroup>
 
 </Project>
